@@ -79,8 +79,14 @@ def set_log_level(l):
     LOG_LEVEL = l
 
 
-import inkex
-STANDALONE = False
+######################
+#  Check if we are in the inkscape extension folder
+try:
+    import inkex
+    EXT_PATH = os.path.abspath(os.path.split(inkex.__file__)[0])
+    STANDALONE = False
+except ImportError:
+    STANDALONE = True
 
 
 ######################
